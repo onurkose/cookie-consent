@@ -75,7 +75,9 @@
       n.checked = e, T(n, ["click", "input", "change"])
     }
 
-    n.type === "checkbox" ? n.checked : n.value
+    console.log(n, n.checked);
+
+    return n.type === "checkbox" ? n.checked : n.value
   };
   var Se = n => new Promise(e => setTimeout(e, n));
   var G = class {
@@ -794,6 +796,8 @@
       this.initElements(), this.listenEvents(), this.updateCheckboxes()
     }
     initElements() {
+      console.log('initElements');
+
       let t = ge.filter(o => {
         let r = H.checkbox(o),
           s = this.element.querySelector(`input${r}, ${r} input`);
@@ -813,6 +817,8 @@
       }), this.emit("submit", o)
     }
     updateCheckboxes() {
+      console.log('updateCheckboxes');
+
       let t = this.store.getConsents();
       this.checkboxes.forEach((o, r) => {
         !!t[r] !== o.checked && Y(o, t[r])
