@@ -69,13 +69,12 @@
   };
   var fe = n => n.replace(/\/+$/, "");
   var Y = (n, e = !0) => {
-    console.log(n, e);
-    
     if (e !== n.checked) {
       n.checked = e, T(n, ["click", "input", "change"])
-    }
 
-    console.log(n, n.checked);
+      var event = new Event('change');
+      n.dispatchEvent(event);
+    }
 
     return n.type === "checkbox" ? n.checked : n.value
   };
