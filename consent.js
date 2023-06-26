@@ -68,7 +68,15 @@
     if (o instanceof e) return o
   };
   var fe = n => n.replace(/\/+$/, "");
-  var Y = (n, e = !0) => (e !== n.checked && (n.checked = e, T(n, ["click", "input", "change"])), n.type === "checkbox" ? n.checked : n.value);
+  var Y = (n, e = !0) => {
+    console.log(n, e);
+    
+    if (e !== n.checked) {
+      n.checked = e, T(n, ["click", "input", "change"])
+    }
+
+    n.type === "checkbox" ? n.checked : n.value
+  };
   var Se = n => new Promise(e => setTimeout(e, n));
   var G = class {
     constructor({
@@ -789,7 +797,6 @@
       let t = ge.filter(o => {
         let r = H.checkbox(o),
           s = this.element.querySelector(`input${r}, ${r} input`);
-        console.log(s, `input${r}, ${r} input`)
         return !s || s.type !== "checkbox" ? !0 : (s.checked && Y(s, !1), this.checkboxes.set(o, s), !1)
       });
       t.length && d.alert(`The Consents Form is missing the following checkboxes: ${t.map(o=>H.checkbox(o)).join(", ")}.`, "warning")
